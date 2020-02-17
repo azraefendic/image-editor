@@ -26,11 +26,14 @@
 
 .image-and-footer {
     width: 85%;
+    height: 100%;
 }
 
 .img {
-    position: relative;
-    bottom: 4vh;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer {
