@@ -1,0 +1,14 @@
+.sidebar-container p {
+    color: #3f414c;
+    font-size: 0.7em;
+    cursor: pointer;
+    padding: 0.8vh;
+}
+
+.sidebar-container p:hover {
+    color: white;
+}
+
+.icon {
+    margin-right: 1vh;
+}

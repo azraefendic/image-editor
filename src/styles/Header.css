@@ -1,0 +1,169 @@
+.logo {
+    width: 8%;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10vh;
+    margin-left: 2vh;
+}
+
+header {
+    height: 9%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #19191b;
+    padding: 1vh;
+    margin: 0;
+    border-bottom: 1px #a23ade solid;
+}
+
+.upload-download {
+    position: absolute;
+    left: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.undoRedo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2vh;
+    font-size: 1.2em;
+    color: #3f414c;
+    width: 20vh;
+}
+
+.undo {
+    position: absolute;
+    cursor: pointer;
+}
+.undo:hover {
+    font-size: 1.4em;
+    color: white;
+}
+
+.redo {
+    position: absolute;
+    right: 6vh;
+    cursor: pointer;
+}
+
+.redo:hover {
+    font-size: 1.4em;
+    color: white;
+}
+
+.upload {
+    margin-right: 8vh;
+}
+
+.open-button {
+    display: inline-block;
+    position: relative;
+    padding: 10px 25px;
+
+    background-color: #1f2024;
+    color: white;
+
+    font-family: sans-serif;
+    text-decoration: none;
+    font-size: 0.9em;
+    text-align: center;
+    border: 1px #3f414c solid;
+    border-radius: 2vh;
+}
+
+.open-button:hover {
+    background-color: white;
+    color: #1f2024;
+    cursor: pointer;
+}
+
+.dnw-button {
+    display: inline-block;
+    position: relative;
+    padding: 10px 25px;
+
+    background-color: #1f2024;
+    color: white;
+
+    font-family: sans-serif;
+    text-decoration: none;
+    font-size: 0.9em;
+    text-align: center;
+    text-indent: 15px;
+    border: 1px #3f414c solid;
+    border-radius: 2vh;
+}
+
+.dnw-button:hover {
+    background-color: white;
+    color: #1f2024;
+    cursor: pointer;
+}
+
+.dnw-button:before,
+.dnw-button:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 52%;
+}
+
+/* Download box shape  */
+.dnw-button:before {
+    width: 10px;
+    height: 2px;
+    border-style: solid;
+    border-width: 0 2px 2px;
+}
+
+/* Download arrow shape */
+.dnw-button:after {
+    width: 0;
+    height: 0;
+    margin-left: 3px;
+    margin-top: -7px;
+
+    border-style: solid;
+    border-width: 4px 4px 0 4px;
+    border-color: transparent;
+    border-top-color: inherit;
+
+    animation: downloadArrow 2s linear infinite;
+    animation-play-state: paused;
+}
+
+.dnw-button:hover:before {
+    border-color: #1f2024;
+}
+
+.dnw-button:hover:after {
+    border-top-color: #333;
+    animation-play-state: running;
+}
+
+/* keyframes for the download icon anim */
+@keyframes downloadArrow {
+    /* 0% and 0.001% keyframes used as a hackish way of having the button frozen on a nice looking frame by default */
+    0% {
+        margin-top: -7px;
+        opacity: 1;
+    }
+
+    0.001% {
+        margin-top: -15px;
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        margin-top: 0;
+        opacity: 0;
+    }
+}
