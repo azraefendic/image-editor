@@ -29,14 +29,19 @@ export default ({ setImage }) => {
     }
 
     return (
-        <section className="container">
-            <div {...getRootProps({ className: "dropzone" })}>
-                <input {...getInputProps()} />
-                <p className="d-n-d">
-                    Drag and drop your image here, or click to select one
-                </p>
-                <img src={upload} alt="Upload icon" />
-            </div>
-        </section>
+        <>
+            <section className="container">
+                <div {...getRootProps({ className: "dropzone" })}>
+                    <input {...getInputProps()} />
+                    <p className="d-n-d">
+                        Drag and drop your image here, or click to select one
+                    </p>
+                    <img src={upload} alt="Upload icon" />
+                </div>
+            </section>
+            <div id="stars"></div>
+            <div id="stars2"></div>
+            <div id="stars3"></div>
+        </>
     );
 };

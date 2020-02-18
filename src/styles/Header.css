@@ -11,10 +11,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #19191b;
+    background-color: #090a0f;
+    /* background-color: #19191b; */
     padding: 1vh;
     margin: 0;
     border-bottom: 1px #a23ade solid;
+    position: relative;
+    z-index: 1;
 }
 
 .upload-download {

@@ -89,7 +89,7 @@ export default ({ tool, state, dispatch }) => {
             )}
             {tool === "filters" && (
                 <div className="align">
-                    <p>Filter 1</p>
+                    <p>Grayscale</p>
                     <p>Filter 2</p>
                     <p>Filter 3</p>
                 </div>
