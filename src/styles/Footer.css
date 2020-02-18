@@ -1,0 +1,134 @@
+.save-button {
+    display: inline-block;
+    position: relative;
+    padding: 10px 25px;
+    background-color: #1f2024;
+    color: white;
+
+    font-family: sans-serif;
+    text-decoration: none;
+    font-size: 0.4em;
+    text-align: center;
+    border: 1px #3f414c solid;
+    border-radius: 2vh;
+    overflow: visible;
+}
+
+.save-button:hover {
+    background-color: white;
+    color: #1f2024;
+    cursor: pointer;
+}
+
+.align {
+    width: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rotate-left {
+    position: absolute;
+    right: 78vh;
+    cursor: pointer;
+    font-size: 0.6em;
+    color: #3f414c;
+}
+
+.rotate-right {
+    position: absolute;
+    right: 68vh;
+    cursor: pointer;
+    font-size: 0.6em;
+    color: #3f414c;
+}
+
+.rotate-left:hover {
+    font-size: 0.8em;
+    color: white;
+}
+
+.rotate-right:hover {
+    font-size: 0.8em;
+    color: white;
+}
+
+.slide-container {
+    width: 100%;
+}
+
+.slider {
+    /* margin-right: 5vh; */
+    width: 50%;
+}
+
+.align p {
+    font-size: 0.6em;
+    color: #3f414c;
+    margin-right: 8vh;
+}
+.align p:hover {
+    color: white;
+    cursor: pointer;
+}
+.text {
+    margin-right: 5vh;
+    font-size: 0.6em;
+    width: 100%;
+    height: 3.5vh;
+}
+
+.align span {
+    width: 2vh;
+    height: 2vh;
+    border-radius: 2vh;
+    cursor: pointer;
+}
+
+.align span:hover {
+    height: 3vh;
+    width: 3vh;
+    border-radius: 5vh;
+}
+
+#black {
+    position: absolute;
+    left: 55vh;
+    background-color: black;
+}
+
+#indigo {
+    position: absolute;
+    left: 60vh;
+    background-color: indigo;
+}
+
+#red {
+    position: absolute;
+    left: 65vh;
+    background-color: red;
+}
+
+#blue {
+    position: absolute;
+    left: 70vh;
+    background-color: blue;
+}
+
+#green {
+    position: absolute;
+    left: 75vh;
+    background-color: green;
+}
+
+#yellow {
+    position: absolute;
+    left: 80vh;
+    background-color: yellow;
+}
+
+#white {
+    position: absolute;
+    left: 85vh;
+    background-color: white;
+}

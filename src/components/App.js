@@ -10,7 +10,7 @@ function App() {
     const [image, setImage] = useState();
 
     return (
-        <div className="App">
+        <div className="app">
             <Header />
             {image ? (
                 <Editor image={image} />

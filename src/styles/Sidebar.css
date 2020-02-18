@@ -9,6 +9,10 @@
     color: white;
 }
 
+.sidebar-container .active {
+    color: white;
+}
+
 .icon {
     margin-right: 1vh;
 }
