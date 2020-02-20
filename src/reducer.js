@@ -1,10 +1,10 @@
 export const initialState = {
     // crop: null,
     // rotate: null,
-    brightness: 50,
-    contrast: 50,
-    saturation: 50,
-    blur: 50,
+    brightness: 0,
+    contrast: 0,
+    saturation: 0,
+    blur: 0,
     filters: []
     // text: null,
     // doodle: null

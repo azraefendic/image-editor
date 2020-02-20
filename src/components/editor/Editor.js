@@ -1,4 +1,7 @@
-import React, { useState, useReducer } from "react";
+import React, { useEffect, useState, useReducer } from "react";
+import Konva from "konva";
+import { Stage, Layer, Image } from "react-konva";
+import useImage from "use-image";
 
 import reducer, { initialState } from "reducer";
 import Sidebar from "./Sidebar.js";
@@ -6,9 +9,18 @@ import Footer from "./Footer.js";
 
 import "../../styles/Editor.css";
 
-export default ({ image }) => {
+export default ({ url }) => {
     const [tool, setTool] = useState();
     const [state, dispatch] = useReducer(reducer, initialState);
+    const [image] = useImage(url, "Anonymous");
+    const imageRef = React.useRef();
+
+    useEffect(() => {
+        if (image) {
+            imageRef.current.cache();
+            imageRef.current.getLayer().batchDraw();
+        }
+    }, [image]);
 
     return (
         <section className="editor-container">
@@ -17,7 +29,42 @@ export default ({ image }) => {
             </div>
             <div className="image-and-footer">
                 <div className="img">
-                    <img className="image" src={image} alt="Image for edit" />
+                    {/*
+                        properties of Stage class, you can pass them as props
+                        to the Stage component!
+                        Tu se mogu podesiti dimenzije (width & height) i pozicija canvasa (x & y)
+                        https://konvajs.org/api/Konva.Stage.html#main
+                    */}
+                    <Stage
+                        width={window.innerWidth}
+                        height={window.innerHeight}
+                    >
+                        <Layer>
+                            {/*
+                                Moze se podesiti i puno stvari za sliku, ukljucujuci poziciju slike
+                                unutar canvasa. Napraviti dimenzije canvasa i onda podesiti poziciju
+                                slike unutar toga, da se centrira.
+                                API za sliku, tu ima i sve ostalo sto se moze uraditi, od rotacija, crop, i dosta drugih
+                                raznih efekata: https://konvajs.org/api/Konva.Image.html
+                            */}
+                            <Image
+                                ref={imageRef}
+                                image={image}
+                                width={1500}
+                                height={900}
+                                filters={[
+                                    Konva.Filters.Blur,
+                                    Konva.Filters.Brighten,
+                                    Konva.Filters.Contrast,
+                                    Konva.Filters.HSV
+                                ]}
+                                blurRadius={state.blur}
+                                brightness={state.brightness}
+                                contrast={state.contrast}
+                                saturation={state.saturation}
+                            />
+                        </Layer>
+                    </Stage>
                 </div>
                 <div className="footer">
                     <Footer tool={tool} state={state} dispatch={dispatch} />

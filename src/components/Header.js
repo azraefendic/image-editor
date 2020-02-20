@@ -2,12 +2,10 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faShare } from "@fortawesome/free-solid-svg-icons";
 
-import photo from "../assets/photo.png";
 import logo from "../assets/logo.png";
 import "../styles/Header.css";
 
-export default function Header(props) {
-    const image = props.image;
+export default ({ image }) => {
     return (
         <header>
             <img className="logo" src={logo} alt="Logo" />

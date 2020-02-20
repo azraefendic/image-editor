@@ -13,7 +13,7 @@ function App() {
         <div className="app">
             <Header image={image} />
             {image ? (
-                <Editor image={image} />
+                <Editor url={image} />
             ) : (
                 <Uploader setImage={setImage} />
             )}

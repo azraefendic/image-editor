@@ -42,6 +42,9 @@ export default ({ tool, state, dispatch }) => {
                     <Slider
                         id="brightness"
                         className="slider"
+                        min={-1}
+                        max={1}
+                        step={0.1}
                         value={state.brightness}
                         onChange={value =>
                             handleSliderChange("brightness", value)
@@ -55,6 +58,9 @@ export default ({ tool, state, dispatch }) => {
                     <Slider
                         id="contrast"
                         className="slider"
+                        min={-100}
+                        max={100}
+                        step={1}
                         value={state.contrast}
                         onChange={value =>
                             handleSliderChange("contrast", value)
@@ -68,6 +74,9 @@ export default ({ tool, state, dispatch }) => {
                     <Slider
                         id="saturation"
                         className="slider"
+                        min={-2}
+                        max={2}
+                        step={0.1}
                         value={state.saturation}
                         onChange={value =>
                             handleSliderChange("saturation", value)
@@ -81,6 +90,9 @@ export default ({ tool, state, dispatch }) => {
                     <Slider
                         id="blur"
                         className="slider"
+                        min={0}
+                        max={100}
+                        step={1}
                         value={state.blur}
                         onChange={value => handleSliderChange("blur", value)}
                         aria-labelledby="input-slider"
@@ -90,8 +102,8 @@ export default ({ tool, state, dispatch }) => {
             {tool === "filters" && (
                 <div className="align">
                     <p>Grayscale</p>
-                    <p>Filter 2</p>
-                    <p>Filter 3</p>
+                    <p>Sepia</p>
+                    <p>Invert</p>
                 </div>
             )}
             {tool === "text" && (
