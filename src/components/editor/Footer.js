@@ -42,9 +42,9 @@ export default ({ tool, state, dispatch }) => {
                     <Slider
                         id="brightness"
                         className="slider"
-                        min={-1}
-                        max={1}
-                        step={0.1}
+                        min={-0.5}
+                        max={0.5}
+                        step={0.05}
                         value={state.brightness}
                         onChange={value =>
                             handleSliderChange("brightness", value)
@@ -58,8 +58,8 @@ export default ({ tool, state, dispatch }) => {
                     <Slider
                         id="contrast"
                         className="slider"
-                        min={-100}
-                        max={100}
+                        min={-50}
+                        max={50}
                         step={1}
                         value={state.contrast}
                         onChange={value =>
@@ -74,8 +74,8 @@ export default ({ tool, state, dispatch }) => {
                     <Slider
                         id="saturation"
                         className="slider"
-                        min={-2}
-                        max={2}
+                        min={-1.5}
+                        max={1.5}
                         step={0.1}
                         value={state.saturation}
                         onChange={value =>
@@ -91,8 +91,8 @@ export default ({ tool, state, dispatch }) => {
                         id="blur"
                         className="slider"
                         min={0}
-                        max={100}
-                        step={1}
+                        max={5}
+                        step={0.5}
                         value={state.blur}
                         onChange={value => handleSliderChange("blur", value)}
                         aria-labelledby="input-slider"
@@ -120,13 +120,13 @@ export default ({ tool, state, dispatch }) => {
             )}
             {tool === "doodle" && (
                 <div className="align">
-                    <span id="black"> </span>
-                    <span id="indigo"> </span>
-                    <span id="red"> </span>
-                    <span id="blue"> </span>
-                    <span id="green"> </span>
-                    <span id="yellow"> </span>
-                    <span id="white"> </span>
+                    <span id="black" />
+                    <span id="indigo" />
+                    <span id="red" />
+                    <span id="blue" />
+                    <span id="green" />
+                    <span id="yellow" />
+                    <span id="white" />
                 </div>
             )}
         </section>

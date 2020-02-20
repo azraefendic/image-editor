@@ -76,7 +76,7 @@ export default ({ tool, setTool }) => (
             onClick={() => setTool("doodle")}
         >
             <FontAwesomeIcon icon={faPencilAlt} className="icon" />
-            Doodle
+            Draw
         </p>
     </div>
 );
