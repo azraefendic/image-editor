@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useReducer } from "react";
 import Konva from "konva";
-import { Stage, Layer, Image, Text } from "react-konva";
+import { Stage, Layer, Image, Text, Line } from "react-konva";
 import useImage from "use-image";
 
 import reducer, { initialState } from "reducer";
@@ -23,6 +23,41 @@ export default ({ url }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [image] = useImage(url, "Anonymous");
     const imageRef = React.useRef();
+    const stageRef = React.useRef();
+    const drawingRef = React.useRef(false);
+
+    const handleMouseDown = () => {
+        drawingRef.current = true;
+        // add line
+        dispatch({
+            type: "doodle",
+            value: [...state.doodle, []]
+        });
+    };
+
+    const handleMouseMove = e => {
+        if (!drawingRef.current || tool !== "doodle") {
+            return;
+        }
+        const stage = stageRef.current.getStage();
+        const point = stage.getPointerPosition();
+        const lines = state.doodle;
+
+        let lastLine = lines[lines.length - 1];
+        // add point
+        lastLine = lastLine.concat([point.x, point.y]);
+
+        // replace last
+        lines.splice(lines.length - 1, 1, lastLine);
+        dispatch({
+            type: "doodle",
+            value: state.doodle.concat()
+        });
+    };
+
+    const handleMouseUp = () => {
+        drawingRef.current = false;
+    };
 
     const srcWidth = (image && image.width) || 0;
     const srcHeight = (image && image.height) || 0;
@@ -81,7 +116,16 @@ export default ({ url }) => {
             </div>
             <div className="image-and-footer">
                 <div className="img">
-                    <Stage width={ratioFit.width} height={ratioFit.height}>
+                    <Stage
+                        width={ratioFit.width}
+                        height={ratioFit.height}
+                        onContentMousedown={handleMouseDown}
+                        onContentMousemove={handleMouseMove}
+                        onContentMouseup={handleMouseUp}
+                        ref={node => {
+                            stageRef.current = node;
+                        }}
+                    >
                         <Layer>
                             <Image
                                 ref={imageRef}
@@ -94,6 +138,9 @@ export default ({ url }) => {
                                 contrast={state.contrast}
                                 saturation={state.saturation}
                             />
+                            {state.doodle.map((line, i) => (
+                                <Line key={i} points={line} stroke={state.doodleColour} />
+                            ))}
                             <Text
                                 text={state.text}
                                 x={state.textPosition.x}

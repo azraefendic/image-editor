@@ -165,13 +165,48 @@ export default ({ tool, state, dispatch }) => {
             )}
             {tool === "doodle" && (
                 <div className="align doodle">
-                    <span id="black" />
-                    <span id="indigo" />
-                    <span id="red" />
-                    <span id="blue" />
-                    <span id="green" />
-                    <span id="yellow" />
-                    <span id="white" />
+                    <span id="black" onClick={() => {
+                         dispatch({
+                                type: "doodleColour",
+                                value: "black"
+                            })
+                    }} />
+                    <span id="indigo" onClick={() => {
+                         dispatch({
+                                type: "doodleColour",
+                                value: "indigo"
+                            })
+                    }} />
+                    <span id="red" onClick={() => {
+                         dispatch({
+                                type: "doodleColour",
+                                value: "red"
+                            })
+                    }} />
+                    <span id="blue" onClick={() => {
+                         dispatch({
+                                type: "doodleColour",
+                                value: "blue"
+                            })
+                    }} />
+                    <span id="green" onClick={() => {
+                         dispatch({
+                                type: "doodleColour",
+                                value: "green"
+                            })
+                    }} />
+                    <span id="yellow" onClick={() => {
+                         dispatch({
+                                type: "doodleColour",
+                                value: "yellow"
+                            })
+                    }} />
+                    <span id="white" onClick={() => {
+                         dispatch({
+                                type: "doodleColour",
+                                value: "white"
+                            })
+                    }} />
                 </div>
             )}
         </section>

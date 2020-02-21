@@ -13,7 +13,8 @@ export const initialState = {
     sepia: false,
     invert: false,
     grayscale: false,
-    // doodle: null
+    doodle: [],
+    doodleColour: "red",
 };
 
 export default function reducer(state, action) {
@@ -77,6 +78,16 @@ export default function reducer(state, action) {
             return {
                 ...state,
                 grayscale: !state.grayscale
+            };
+        case "doodle":
+            return {
+                ...state,
+                doodle: action.value
+            };
+        case "doodleColour":
+            return {
+                ...state,
+                doodleColour: action.value
             };
         default:
             // eslint-disable-next-line no-throw-literal
