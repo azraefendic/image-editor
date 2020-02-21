@@ -10,6 +10,9 @@ export const initialState = {
     textPosition: {x: 200, y: 200},
     fontSize: 18,
     colour: "#ffffff",
+    sepia: false,
+    invert: false,
+    grayscale: false,
     // doodle: null
 };
 
@@ -59,6 +62,21 @@ export default function reducer(state, action) {
             return {
                 ...state,
                 textPosition: action.value
+            };
+        case "sepia":
+            return {
+                ...state,
+                sepia: !state.sepia
+            };
+        case "invert":
+            return {
+                ...state,
+                invert: !state.invert
+            };
+        case "grayscale":
+            return {
+                ...state,
+                grayscale: !state.grayscale
             };
         default:
             // eslint-disable-next-line no-throw-literal

@@ -97,10 +97,37 @@ export default ({ tool, state, dispatch }) => {
                 </div>
             )}
             {tool === "filters" && (
-                <div className="align">
-                    <p>Grayscale</p>
-                    <p>Sepia</p>
-                    <p>Invert</p>
+                <div className="align filters">
+                    <p
+                        className={state.grayscale ? "active" : undefined}
+                        onClick={() =>
+                            dispatch({
+                                type: "grayscale"
+                            })
+                        }
+                    >
+                        Grayscale
+                    </p>
+                    <p
+                        className={state.sepia ? "active" : undefined}
+                        onClick={() =>
+                            dispatch({
+                                type: "sepia"
+                            })
+                        }
+                    >
+                        Sepia
+                    </p>
+                    <p
+                        className={state.invert ? "active" : undefined}
+                        onClick={() =>
+                            dispatch({
+                                type: "invert"
+                            })
+                        }
+                    >
+                        Invert
+                    </p>
                 </div>
             )}
             {tool === "text" && (
@@ -135,7 +162,7 @@ export default ({ tool, state, dispatch }) => {
                 </div>
             )}
             {tool === "doodle" && (
-                <div className="align">
+                <div className="align doodle">
                     <span id="black" />
                     <span id="indigo" />
                     <span id="red" />

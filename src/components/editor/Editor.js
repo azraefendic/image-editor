@@ -15,6 +15,23 @@ export default ({ url }) => {
     const [image] = useImage(url, "Anonymous");
     const imageRef = React.useRef();
 
+    let filters = [
+        Konva.Filters.Blur,
+        Konva.Filters.Brighten,
+        Konva.Filters.Contrast,
+        Konva.Filters.HSV
+    ];
+
+    if (state.sepia) {
+        filters.push(Konva.Filters.Sepia);
+    }
+    if (state.invert) {
+        filters.push(Konva.Filters.Invert);
+    }
+    if (state.grayscale) {
+        filters.push(Konva.Filters.Grayscale);
+    }
+
     useEffect(() => {
         if (image) {
             imageRef.current.cache();
@@ -50,12 +67,7 @@ export default ({ url }) => {
                             <Image
                                 ref={imageRef}
                                 image={image}
-                                filters={[
-                                    Konva.Filters.Blur,
-                                    Konva.Filters.Brighten,
-                                    Konva.Filters.Contrast,
-                                    Konva.Filters.HSV
-                                ]}
+                                filters={filters}
                                 blurRadius={state.blur}
                                 brightness={state.brightness}
                                 contrast={state.contrast}
