@@ -9,11 +9,47 @@ import Footer from "./Footer.js";
 
 import "../../styles/Editor.css";
 
+/**
+ * Conserve aspect ratio of the original region. Useful when shrinking/enlarging
+ * images to fit into a certain area.
+ */
+const calculateAspectRatioFit = (srcWidth, srcHeight, maxWidth, maxHeight) => {
+    const ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+    return { width: srcWidth * ratio, height: srcHeight * ratio };
+};
+
 export default ({ url }) => {
     const [tool, setTool] = useState();
     const [state, dispatch] = useReducer(reducer, initialState);
     const [image] = useImage(url, "Anonymous");
     const imageRef = React.useRef();
+
+    const srcWidth = (image && image.width) || 0;
+    const srcHeight = (image && image.height) || 0;
+
+    const pageWidth = document.getElementsByTagName("body")[0].offsetWidth || 0;
+    const sidebar = document.getElementsByClassName("sidebar");
+    const sidebarWidth =
+        (sidebar && sidebar.length && sidebar[0].offsetWidth) || 0;
+
+    const pageHeight =
+        document.getElementsByTagName("body")[0].offsetHeight || 0;
+    const header = document.getElementsByTagName("header");
+    const headerHeight =
+        (header && header.length && header[0].offsetHeight) || 0;
+    const footer = document.getElementsByClassName("footer");
+    const footerHeight =
+        (footer && footer.length && footer[0].offsetHeight) || 0;
+
+    const maxWidth = pageWidth - sidebarWidth;
+    const maxHeight = pageHeight - headerHeight - footerHeight - 40;
+
+    const ratioFit = calculateAspectRatioFit(
+        srcWidth,
+        srcHeight,
+        maxWidth,
+        maxHeight
+    );
 
     let filters = [
         Konva.Filters.Blur,
@@ -46,27 +82,16 @@ export default ({ url }) => {
             </div>
             <div className="image-and-footer">
                 <div className="img">
-                    {/*
-                        properties of Stage class, you can pass them as props
-                        to the Stage component!
-                        Tu se mogu podesiti dimenzije (width & height) i pozicija canvasa (x & y)
-                        https://konvajs.org/api/Konva.Stage.html#main
-                    */}
                     <Stage
-                        width={window.innerWidth}
-                        height={window.innerHeight}
+                        width={ratioFit.width}
+                        height={ratioFit.height}
                     >
                         <Layer>
-                            {/*
-                                Moze se podesiti i puno stvari za sliku, ukljucujuci poziciju slike
-                                unutar canvasa. Napraviti dimenzije canvasa i onda podesiti poziciju
-                                slike unutar toga, da se centrira.
-                                API za sliku, tu ima i sve ostalo sto se moze uraditi, od rotacija, crop, i dosta drugih
-                                raznih efekata: https://konvajs.org/api/Konva.Image.html
-                            */}
                             <Image
                                 ref={imageRef}
                                 image={image}
+                                width={ratioFit.width}
+                                height={ratioFit.height}
                                 filters={filters}
                                 blurRadius={state.blur}
                                 brightness={state.brightness}

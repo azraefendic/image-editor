@@ -29,6 +29,7 @@
 
 .img {
     height: 80%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,15 +53,5 @@
 }
 
 canvas {
-    /*
-    max-height: 75vh;
-    max-width: 130vh;
-    */
-    left: 35%;
-    right: 35%;
-}
-
-.konvajs-content {
-    max-height: 75vh !important;
-    max-width: 130vh !important;
+    left: -200px !important;
 }
