@@ -41,7 +41,7 @@ export default ({ url }) => {
         (footer && footer.length && footer[0].offsetHeight) || 0;
 
     const maxWidth = pageWidth - sidebarWidth - 20;
-    const maxHeight = pageHeight - headerHeight - footerHeight - 60;
+    const maxHeight = pageHeight - headerHeight - footerHeight - 80;
 
     const ratioFit = calculateAspectRatioFit(
         srcWidth,
