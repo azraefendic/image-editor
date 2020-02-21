@@ -5,17 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo, faRedo } from "@fortawesome/free-solid-svg-icons";
 
 import "rc-slider/assets/index.css";
-
 import "../../styles/Footer.css";
 
 export default ({ tool, state, dispatch }) => {
     const keyCheck = e => {
         if (e.key === "Enter") {
             e.preventDefault(); //stops the annoying moving to a new line
-            console.log("e.target.value: ", e.target.value);
-            console.log("e.keyCode: ", e.keyCode);
             const text = e.target.value;
-            e.target.value = "";
+            dispatch({ type: "text", value: text });
         }
     };
 
@@ -108,14 +105,33 @@ export default ({ tool, state, dispatch }) => {
             )}
             {tool === "text" && (
                 <div className="align">
-                    <textarea
+                    <input
                         className="text"
                         placeholder="Add your text here...."
                         onKeyDown={keyCheck}
-                    ></textarea>
-                    <button className="save-button">
-                        <strong>save</strong>
-                    </button>
+                    />
+                    <input
+                        type="number"
+                        min={8}
+                        max={100}
+                        value={state.fontSize}
+                        onChange={e =>
+                            dispatch({
+                                type: "fontSize",
+                                value: Number.parseInt(e.currentTarget.value)
+                            })
+                        }
+                    />
+                    <input
+                        type="color"
+                        value={state.colour}
+                        onChange={e =>
+                            dispatch({
+                                type: "colour",
+                                value: e.currentTarget.value
+                            })
+                        }
+                    />
                 </div>
             )}
             {tool === "doodle" && (

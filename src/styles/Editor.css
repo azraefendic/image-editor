@@ -52,8 +52,10 @@
 }
 
 canvas {
+    /*
     max-height: 75vh;
     max-width: 130vh;
+    */
     left: 35%;
     right: 35%;
 }

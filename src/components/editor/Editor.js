@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useReducer } from "react";
 import Konva from "konva";
-import { Stage, Layer, Image } from "react-konva";
+import { Stage, Layer, Image, Text } from "react-konva";
 import useImage from "use-image";
 
 import reducer, { initialState } from "reducer";
@@ -50,8 +50,6 @@ export default ({ url }) => {
                             <Image
                                 ref={imageRef}
                                 image={image}
-                                width={1500}
-                                height={900}
                                 filters={[
                                     Konva.Filters.Blur,
                                     Konva.Filters.Brighten,
@@ -62,6 +60,23 @@ export default ({ url }) => {
                                 brightness={state.brightness}
                                 contrast={state.contrast}
                                 saturation={state.saturation}
+                            />
+                            <Text
+                                text={state.text}
+                                x={state.textPosition.x}
+                                y={state.textPosition.y}
+                                fill={state.colour}
+                                fontSize={state.fontSize}
+                                draggable={true}
+                                onDragEnd={e => {
+                                    dispatch({
+                                        type: "dragText",
+                                        value: {
+                                            x: e.target.x(),
+                                            y: e.target.y()
+                                        }
+                                    });
+                                }}
                             />
                         </Layer>
                     </Stage>
