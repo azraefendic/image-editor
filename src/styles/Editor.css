@@ -36,7 +36,7 @@
     position: absolute;
     top: 11%;
     bottom: 50%;
-    left: 36vh;
+    left: 13.5vh;
 }
 
 .footer {
@@ -53,5 +53,5 @@
 }
 
 canvas {
-    left: -200px !important;
+    /* left: -195px !important; */
 }

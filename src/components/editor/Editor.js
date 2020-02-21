@@ -27,13 +27,12 @@ export default ({ url }) => {
     const srcWidth = (image && image.width) || 0;
     const srcHeight = (image && image.height) || 0;
 
-    const pageWidth = document.getElementsByTagName("body")[0].offsetWidth || 0;
+    const pageWidth = document.getElementsByTagName("body")[0].offsetWidth;
     const sidebar = document.getElementsByClassName("sidebar");
     const sidebarWidth =
         (sidebar && sidebar.length && sidebar[0].offsetWidth) || 0;
 
-    const pageHeight =
-        document.getElementsByTagName("body")[0].offsetHeight || 0;
+    const pageHeight = document.getElementsByTagName("body")[0].offsetHeight;
     const header = document.getElementsByTagName("header");
     const headerHeight =
         (header && header.length && header[0].offsetHeight) || 0;
@@ -41,8 +40,8 @@ export default ({ url }) => {
     const footerHeight =
         (footer && footer.length && footer[0].offsetHeight) || 0;
 
-    const maxWidth = pageWidth - sidebarWidth;
-    const maxHeight = pageHeight - headerHeight - footerHeight - 40;
+    const maxWidth = pageWidth - sidebarWidth - 20;
+    const maxHeight = pageHeight - headerHeight - footerHeight - 60;
 
     const ratioFit = calculateAspectRatioFit(
         srcWidth,
@@ -82,10 +81,7 @@ export default ({ url }) => {
             </div>
             <div className="image-and-footer">
                 <div className="img">
-                    <Stage
-                        width={ratioFit.width}
-                        height={ratioFit.height}
-                    >
+                    <Stage width={ratioFit.width} height={ratioFit.height}>
                         <Layer>
                             <Image
                                 ref={imageRef}

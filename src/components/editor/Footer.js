@@ -138,6 +138,7 @@ export default ({ tool, state, dispatch }) => {
                         onKeyDown={keyCheck}
                     />
                     <input
+                        className="font"
                         type="number"
                         min={8}
                         max={100}
@@ -150,6 +151,7 @@ export default ({ tool, state, dispatch }) => {
                         }
                     />
                     <input
+                        className="color-picker"
                         type="color"
                         value={state.colour}
                         onChange={e =>
